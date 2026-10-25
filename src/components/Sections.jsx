@@ -1,6 +1,7 @@
 import { Check, ExternalLink } from 'lucide-react'
 import { about, audiences, services, process, faq, rates, work } from '../content'
 import { bookingLink } from './mail'
+import CountUp from './CountUp'
 
 function Section({ id, eyebrow, title, intro, tone = 'light', children }) {
   return (
@@ -50,16 +51,51 @@ export function About() {
               </li>
             ))}
           </ul>
+          <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-line pt-5">
+            {about.scholar.stats.map((st) => (
+              <div key={st.label}>
+                <dd className="font-display text-3xl font-semibold text-ink">
+                  <CountUp value={st.value} suffix={st.suffix} />
+                </dd>
+                <dt className="mt-1 text-xs text-muted">{st.label}</dt>
+              </div>
+            ))}
+          </dl>
+          <a
+            href={about.scholar.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 block text-sm font-medium text-accent hover:text-accent-strong"
+          >
+            View on Google Scholar <span aria-hidden="true">→</span>
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
         </aside>
       </div>
-      <div className="mt-14 grid gap-8 sm:grid-cols-2">
-        {about.highlights.map((h) => (
-          <div key={h.title} className="border-t-2 border-accent pt-5">
-            <h3 className="text-lg font-semibold">{h.title}</h3>
-            <p className="mt-2 text-muted">{h.text}</p>
-          </div>
+      <h3 className="mt-16 text-xl font-semibold">Career</h3>
+      <ol className="mt-8 ml-2 border-l-2 border-line">
+        {about.timeline.map((m) => (
+          <li key={m.period + m.title} className="relative pb-10 pl-8 last:pb-0">
+            <span
+              aria-hidden="true"
+              className={`absolute -left-[9px] top-1 size-4 rounded-full border-2 border-accent ${m.current ? 'bg-accent' : 'bg-white'}`}
+            />
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent">{m.period}</p>
+            <h4 className="mt-1 text-lg font-semibold">{m.title}</h4>
+            <p className="text-muted">{m.org}</p>
+            {m.points && (
+              <ul className="mt-3 max-w-3xl space-y-2 text-sm text-muted">
+                {m.points.map((p) => (
+                  <li key={p} className="flex gap-2">
+                    <span aria-hidden="true" className="mt-2 size-1 shrink-0 rounded-full bg-accent" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
         ))}
-      </div>
+      </ol>
     </Section>
   )
 }
@@ -67,9 +103,9 @@ export function About() {
 export function Services() {
   return (
     <Section id="services" eyebrow="Services" title="What I can take off your plate.">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+      <div className="grid gap-x-6 sm:grid-cols-2 lg:grid-cols-6">
         {services.map((s, i) => (
-          <article key={s.name} className={`${services.length % 3 === 0 || i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'} rounded-xl border border-line bg-paper p-7`}>
+          <article key={s.name} className={`${services.length % 3 === 0 || i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'} mb-6 row-span-3 grid grid-rows-subgrid rounded-xl border border-line bg-paper p-7`}>
             <h3 className="text-lg font-semibold">{s.name}</h3>
             <p className="mt-2 text-muted">{s.text}</p>
             <ul className="mt-5 space-y-2 text-sm">
@@ -89,7 +125,7 @@ export function Services() {
 
 export function Process() {
   return (
-    <Section id="process" tone="tint" eyebrow="How it works" title="Simple, transparent, no surprises.">
+    <Section id="process" eyebrow="How it works" title="Simple, transparent, no surprises.">
       <ol className="grid gap-8 md:grid-cols-3">
         {process.map((p, i) => (
           <li key={p.title}>
@@ -107,6 +143,7 @@ export function Pricing() {
   return (
     <Section
       id="pricing"
+      tone="tint"
       eyebrow="Pricing"
       title="Clear rates, flexible formats."
       intro="Prices are net of VAT. Fixed-price offers are available for well-defined projects."
@@ -134,32 +171,50 @@ export function Pricing() {
 export function Work() {
   if (work.length === 0) return null
   return (
-    <Section id="work" eyebrow="Selected work" title="Research and collaborations.">
+    <Section
+      id="work"
+      tone="tint"
+      eyebrow="Selected work"
+      title="Methods and collaborations behind the claims."
+      intro="A selection of publications with a focus on methods, data analysis and large collaborative projects."
+    >
       <ul className="divide-y divide-line border-y border-line">
         {work.map((w) => (
-          <li key={w.title} className="flex items-start justify-between gap-6 py-5">
-            <div>
-              <p className="font-medium">{w.title}</p>
-              <p className="mt-1 text-sm text-muted">
-                {w.venue}, {w.year}
-                {w.note && ` · ${w.note}`}
-              </p>
-            </div>
-            {w.href && (
-              <a href={w.href} className="shrink-0 text-accent hover:text-accent-strong" aria-label={`Open ${w.title}`}>
-                <ExternalLink size={18} />
-              </a>
-            )}
+          <li key={w.href}>
+            <a
+              href={w.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start justify-between gap-6 py-5"
+            >
+              <span>
+                <span className="block font-medium group-hover:text-accent">{w.title}</span>
+                <span className="mt-1 block text-sm text-muted">
+                  {w.venue}, {w.year}
+                  {w.note && ` · ${w.note}`}
+                </span>
+              </span>
+              <ExternalLink size={18} className="mt-1 shrink-0 text-accent" aria-hidden="true" />
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
           </li>
         ))}
       </ul>
+      <a
+        href={about.scholar.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-8 inline-block font-medium text-accent hover:text-accent-strong"
+      >
+        Full list on Google Scholar <span aria-hidden="true">→</span>
+      </a>
     </Section>
   )
 }
 
 export function FAQ() {
   return (
-    <Section id="faq" tone="tint" eyebrow="FAQ" title="Common questions.">
+    <Section id="faq" eyebrow="FAQ" title="Common questions.">
       <div className="max-w-3xl divide-y divide-line border-y border-line">
         {faq.map((f) => (
           <details key={f.q} className="group py-5">

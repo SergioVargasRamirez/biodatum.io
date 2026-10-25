@@ -6,6 +6,7 @@ import { bookingLink, bookingProps } from './mail'
 const links = [
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
+  { name: 'Work', href: '#work' },
   { name: 'How it works', href: '#process' },
   { name: 'Pricing', href: '#pricing' },
   { name: 'FAQ', href: '#faq' },

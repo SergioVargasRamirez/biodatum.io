@@ -35,9 +35,9 @@ export default function App() {
             <Audiences />
             <About />
             <Services />
+            <Work />
             <Process />
             <Pricing />
-            <Work />
             <FAQ />
             <Contact />
           </>
