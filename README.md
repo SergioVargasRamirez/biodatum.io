@@ -19,7 +19,7 @@ All copy, rates and the booking URL live in `src/content.js`. Legal pages are in
 
 Pushing to `main` builds and deploys via `.github/workflows/deploy.yml`. In the repository settings, set Pages → Source to "GitHub Actions".
 
-Without a custom domain the site lives at `https://<user>.github.io/<repo>/`, so build with `BASE_PATH=/<repo>/`. With a custom domain (add `public/CNAME` containing the domain), no base path is needed.
+The site is served from the custom domain `biodatum.io` (see `public/CNAME`), so no base path is needed. To deploy under `https://<user>.github.io/<repo>/` instead, build with `BASE_PATH=/<repo>/`.
 
 ## License
 
