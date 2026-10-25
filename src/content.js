@@ -50,7 +50,7 @@ export const about = {
       org: 'Independent consultancy, Munich',
       current: true,
       points: [
-        'Bioinformatics, data science and training for biotech companies and academic labs.',
+        'Bioinformatics pipelines, data science advice and training for biotech companies and academic labs.',
         'Genomic and epigenomic workflows on Illumina, Oxford Nanopore and PacBio data, built for reproducibility.',
       ],
     },
