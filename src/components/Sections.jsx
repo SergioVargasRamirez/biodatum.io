@@ -52,6 +52,14 @@ export function About() {
           </ul>
         </aside>
       </div>
+      <div className="mt-14 grid gap-8 sm:grid-cols-2">
+        {about.highlights.map((h) => (
+          <div key={h.title} className="border-t-2 border-accent pt-5">
+            <h3 className="text-lg font-semibold">{h.title}</h3>
+            <p className="mt-2 text-muted">{h.text}</p>
+          </div>
+        ))}
+      </div>
     </Section>
   )
 }

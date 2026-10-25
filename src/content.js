@@ -32,15 +32,32 @@ export const hero = {
     'academic labs and analytics teams. Reproducible, documented, delivered on time.',
 }
 
-// DRAFT: rewrite in your own words. Set `photo` to a file in /public (e.g. '/sergio.jpg') to show a portrait.
+// Set `photo` to a file in /public (e.g. '/sergio.jpg') to show a portrait.
 export const about = {
   name: 'Dr. Sergio Vargas',
   title: 'Dr. rer. nat. habil.',
   photo: '',
   paragraphs: [
-    'I am a molecular biologist and bioinformatician based in Munich. I help teams turn complex biological data into results they can rely on and publish.',
-    'Years of research in genomics and evolutionary biology taught me how data behaves in the lab and on the cluster. Now I bring that experience to biotech companies, labs and analytics teams, without the overhead of a large agency.',
+    'I am a molecular biologist and bioinformatician based in Munich. I have led omics projects from planning to delivery, so I know both sides of a project: the data and the lab, and the goals, budgets and deadlines around them.',
     'You work with me directly, from the first call to the final handover.',
+  ],
+  highlights: [
+    {
+      title: 'Leading omics teams',
+      text: 'Led a team of bioinformaticians and lab technicians generating omics datasets for a wide range of projects. Defined goals, budget and timelines with project owners and set up collaborations with internal and external groups.',
+    },
+    {
+      title: 'Strategy and infrastructure',
+      text: 'Helped shape scientific collaborations, IT and molecular lab investments, and strategies for data ownership, access and storage.',
+    },
+    {
+      title: 'Industry collaboration',
+      text: 'Worked with biotech companies in the Munich area (Martinsried) on custom bait sets for metatranscriptomics and on testing pre-release kits.',
+    },
+    {
+      title: 'Software and data in agile teams',
+      text: 'Part of a Scrum team customising an electronic lab notebook for a major pharma customer: SQL optimisation, data visualisation, and turning requirements into tasks the team could implement.',
+    },
   ],
   facts: ['Munich, Germany', 'Remote and on-site by agreement', 'Direct contact, no middlemen'],
 }
