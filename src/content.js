@@ -51,7 +51,7 @@ export const about = {
       current: true,
       points: [
         'Bioinformatics, data science and training for biotech companies and academic labs.',
-        'NGS workflows and omics pipelines, including epigenomics, on Illumina, Oxford Nanopore and PacBio data, built for reproducibility.',
+        'Genomic and epigenomic workflows on Illumina, Oxford Nanopore and PacBio data, built for reproducibility.',
       ],
     },
     {
