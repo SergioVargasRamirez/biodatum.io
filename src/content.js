@@ -8,6 +8,16 @@ export const site = {
   bookingUrl: 'https://calendar.app.google/qkYKdk84yUQMgTHd7',
 }
 
+// Same operator details as feedblick-pomodoro (src/lib/legal-controller.ts). Shared by Impressum and privacy page.
+export const controller = {
+  name: 'Dr. Sergio Vargas - biodatum.io',
+  street: 'Nadistr. 06',
+  cityLine: '80809 München',
+  email: 'info@biodatum.io',
+  vatId: 'DE463981547',
+  wirtschaftsId: 'DE463981547-00001',
+}
+
 export const rates = {
   hourly: 75,
   daily: 550,
@@ -24,7 +34,7 @@ export const hero = {
 
 // DRAFT: rewrite in your own words. Set `photo` to a file in /public (e.g. '/sergio.jpg') to show a portrait.
 export const about = {
-  name: 'Dr. Sergio Vargas Ramirez',
+  name: 'Dr. Sergio Vargas',
   title: 'Dr. rer. nat. habil.',
   photo: '',
   paragraphs: [

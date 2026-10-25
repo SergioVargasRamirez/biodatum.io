@@ -1,4 +1,4 @@
-import { site } from '../content'
+import { controller, site } from '../content'
 
 function Page({ title, children }) {
   return (
@@ -10,16 +10,50 @@ function Page({ title, children }) {
   )
 }
 
+function Row({ label, children }) {
+  return (
+    <div>
+      <dt className="inline">{label}: </dt>
+      <dd className="inline text-ink">{children}</dd>
+    </div>
+  )
+}
+
 export function Impressum() {
   return (
-    <Page title="Impressum">
-      <p><strong className="text-ink">Biodatum.io</strong><br />Nadistraße 06<br />80809 München, Germany</p>
-      <p><strong className="text-ink">Managing Director:</strong> Dr. rer. nat. habil. Sergio Vargas Ramirez</p>
+    <Page title="Legal notice (Impressum)">
+      <p className="text-sm">Information according to §5 of the German Digital Services Act (DDG, formerly §5 TMG)</p>
+      <dl className="space-y-1">
+        <Row label="Name">{controller.name}</Row>
+        <Row label="Address">{controller.street}, {controller.cityLine}</Row>
+        <Row label="Email">
+          <a className="text-accent hover:underline" href={`mailto:${controller.email}`}>{controller.email}</a>
+        </Row>
+        <Row label="Phone">{site.phone}</Row>
+        <Row label="VAT identification number (§ 27a UStG)">{controller.vatId}</Row>
+        <Row label="Business identification number (Wirtschafts-ID)">{controller.wirtschaftsId}</Row>
+      </dl>
+      <h2 className="pt-4 text-xl font-semibold text-ink">Responsible for content</h2>
+      <p>Responsible for content per §18(2) of the German Interstate Media Treaty (MStV): the person named above.</p>
+      <h2 className="pt-4 text-xl font-semibold text-ink">Liability for content</h2>
       <p>
-        <strong className="text-ink">Phone:</strong> {site.phone}<br />
-        <strong className="text-ink">Email:</strong> <a className="text-accent hover:underline" href={`mailto:${site.email}`}>{site.email}</a>
+        As a service provider, we are responsible for our own content on these pages under general law, per §7(1) DDG. Under §§8–10 DDG,
+        however, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances indicating
+        unlawful activity. Obligations to remove or block the use of information under general law remain unaffected; liability in this
+        respect is only possible from the point in time at which we become aware of a specific infringement. Upon becoming aware of any
+        such infringement, we will remove the relevant content immediately.
       </p>
-      {/* TODO: add VAT ID (USt-IdNr.) / Steuernummer and legal form if required */}
+      <h2 className="pt-4 text-xl font-semibold text-ink">Liability for links</h2>
+      <p>
+        Our site may contain links to external third-party websites over whose content we have no influence. We therefore cannot assume any
+        liability for this external content; the respective provider or operator of the linked page is always responsible for it. Upon
+        becoming aware of any legal violations, we will remove such links immediately.
+      </p>
+      <h2 className="pt-4 text-xl font-semibold text-ink">Copyright</h2>
+      <p>
+        Content and works created by the operator of this site are subject to German copyright law. Reproduction, editing, distribution, or
+        any use outside the limits of copyright law requires the prior written consent of the respective author or creator.
+      </p>
     </Page>
   )
 }
@@ -29,8 +63,8 @@ export function Privacy() {
   return (
     <Page title="Datenschutzerklärung / Privacy policy">
       <p>
-        <strong className="text-ink">Controller:</strong> Biodatum.io, Dr. Sergio Vargas Ramirez, Nadistraße 06, 80809 München,{' '}
-        <a className="text-accent hover:underline" href={`mailto:${site.email}`}>{site.email}</a>.
+        <strong className="text-ink">Controller:</strong> {controller.name}, {controller.street}, {controller.cityLine},{' '}
+        <a className="text-accent hover:underline" href={`mailto:${controller.email}`}>{controller.email}</a>.
       </p>
       <h2 className="pt-4 text-xl font-semibold text-ink">Hosting</h2>
       <p>
