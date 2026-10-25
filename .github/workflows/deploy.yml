@@ -25,7 +25,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      # Project pages are served from /<repo>/. Remove BASE_PATH once a custom domain (public/CNAME) is set up.
       - run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
