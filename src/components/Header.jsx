@@ -4,6 +4,7 @@ import { site } from '../content'
 import { bookingLink, bookingProps } from './mail'
 
 const links = [
+  { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
   { name: 'How it works', href: '#process' },
   { name: 'Pricing', href: '#pricing' },

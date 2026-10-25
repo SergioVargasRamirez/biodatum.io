@@ -15,7 +15,7 @@ export default function Hero() {
       <svg
         aria-hidden="true"
         viewBox="0 0 12 8"
-        className="absolute -right-24 top-1/2 hidden w-[36rem] -translate-y-1/2 xl:block"
+        className="absolute -right-24 top-1/2 hidden w-[36rem] -translate-y-1/2 2xl:block"
       >
         {cells.map((v, i) => (
           <rect

@@ -22,6 +22,19 @@ export const hero = {
     'academic labs and analytics teams. Reproducible, documented, delivered on time.',
 }
 
+// DRAFT: rewrite in your own words. Set `photo` to a file in /public (e.g. '/sergio.jpg') to show a portrait.
+export const about = {
+  name: 'Dr. Sergio Vargas Ramirez',
+  title: 'Dr. rer. nat. habil.',
+  photo: '',
+  paragraphs: [
+    'I am a molecular biologist and bioinformatician based in Munich. I help teams turn complex biological data into results they can rely on and publish.',
+    'Years of research in genomics and evolutionary biology taught me how data behaves in the lab and on the cluster. Now I bring that experience to biotech companies, labs and analytics teams, without the overhead of a large agency.',
+    'You work with me directly, from the first call to the final handover.',
+  ],
+  facts: ['Munich, Germany', 'Remote and on-site by agreement', 'Direct contact, no middlemen'],
+}
+
 export const audiences = [
   {
     name: 'Start-ups',

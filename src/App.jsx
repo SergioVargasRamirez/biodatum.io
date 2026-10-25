@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import { Audiences, Services, Process, Pricing, Work, FAQ } from './components/Sections'
+import { About, Audiences, Services, Process, Pricing, Work, FAQ } from './components/Sections'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { Impressum, Privacy } from './components/Legal'
@@ -33,6 +33,7 @@ export default function App() {
           <>
             <Hero />
             <Audiences />
+            <About />
             <Services />
             <Process />
             <Pricing />

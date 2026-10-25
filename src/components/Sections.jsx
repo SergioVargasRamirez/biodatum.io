@@ -1,5 +1,5 @@
 import { Check, ExternalLink } from 'lucide-react'
-import { audiences, services, process, faq, rates, work } from '../content'
+import { about, audiences, services, process, faq, rates, work } from '../content'
 import { bookingLink } from './mail'
 
 function Section({ id, eyebrow, title, intro, tone = 'light', children }) {
@@ -30,9 +30,35 @@ export function Audiences() {
   )
 }
 
+export function About() {
+  return (
+    <Section id="about" tone="tint" eyebrow="About me" title={about.name}>
+      <div className="grid gap-10 md:grid-cols-3">
+        <div className="space-y-4 text-lg text-muted md:col-span-2">
+          {about.paragraphs.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
+        <aside className="self-start rounded-xl border border-line bg-paper p-7">
+          {about.photo && <img src={about.photo} alt={about.name} className="mb-6 aspect-square w-full rounded-lg object-cover" />}
+          <p className="font-semibold">{about.title}</p>
+          <ul className="mt-4 space-y-2 text-sm text-muted">
+            {about.facts.map((f) => (
+              <li key={f} className="flex gap-2">
+                <Check size={16} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+                {f}
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </Section>
+  )
+}
+
 export function Services() {
   return (
-    <Section id="services" tone="tint" eyebrow="Services" title="What I can take off your plate.">
+    <Section id="services" eyebrow="Services" title="What I can take off your plate.">
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
         {services.map((s, i) => (
           <article key={s.name} className={`${services.length % 3 === 0 || i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'} rounded-xl border border-line bg-paper p-7`}>
@@ -55,7 +81,7 @@ export function Services() {
 
 export function Process() {
   return (
-    <Section id="process" eyebrow="How it works" title="Simple, transparent, no surprises.">
+    <Section id="process" tone="tint" eyebrow="How it works" title="Simple, transparent, no surprises.">
       <ol className="grid gap-8 md:grid-cols-3">
         {process.map((p, i) => (
           <li key={p.title}>
@@ -73,7 +99,6 @@ export function Pricing() {
   return (
     <Section
       id="pricing"
-      tone="tint"
       eyebrow="Pricing"
       title="Clear rates, flexible formats."
       intro="Prices are net of VAT. Fixed-price offers are available for well-defined projects."
